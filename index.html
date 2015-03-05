@@ -12,8 +12,8 @@
 	window.onload = function() {
 
 		var cv = document.getElementById('cv');
-		cv.width = window.screen.availWidth;
-		cv.height = window.screen.availHeight;
+		cv.width = document.body.clientWidth;
+		cv.height = document.body.clientHeight;
 		var ct = cv.getContext("2d");
 
 		if (ct) {
@@ -31,7 +31,7 @@
 		    //从坐标点(50,50)开始绘制文字
 		    ct.fillText("CodePlayer+中文测试", 30, cv.height/4);
 		    ct.fillText("duang~~我就是测试文字", 40, cv.height/2);
-		    alert('jyc is a sb')
+		    alert(cv.width + ':' + cv.height)
 		}
 	}
 
