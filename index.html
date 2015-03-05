@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta content="width=device-width" name="viewport">
-	<title>Document</title>
+	<title>我是标题</title>
 </head>
 <body style="margin: 0;">
 	<canvas id="cv" style="display: block;"></canvas>
@@ -189,6 +189,10 @@
 			ct.fillStyle = lineColor;
 			ct.fillRect(0,0,cv.width,cv.height);
 
+		for (var i = 0; i < 1; i++) {
+			drawShape(100,100,10,100,drawStar,ct);
+		}
+
 		renderDigit( MARGIN_LEFT , MARGIN_TOP , parseInt(hours/10) ,parseInt(hours/10) != parseInt(ohours/10), ct );
 	    renderDigit( MARGIN_LEFT + 15*(R+1) , MARGIN_TOP , parseInt(hours%10) , parseInt(hours%10) != parseInt(ohours%10), ct );
 	    renderDigit( MARGIN_LEFT + 30*(R + 1) , MARGIN_TOP , 10 , false, ct );
@@ -200,22 +204,27 @@
 
 	    renderBalls(ct);
 
+	    ct.save();
 	    ct.font = "30px Courier New";
 	    ct.fillStyle = "blue";
    		ct.fillText("duang~ 您的ip为：\n" , 20, 50);
    		ct.fillText(ip,20,300);
+   		ct.restore();
 
 
 	}
 
 	function renderDigit(offset_x, offset_y, num, isChange, ct) {
-		ct.fillStyle = 'blue';
+		ct.save();
+
+		ct.fillStyle = 'red';
 		for (var i = 0; i < digit[num].length; i++) {
 			for (var j = 0; j < digit[num][i].length; j++) {
 				if (digit[num][i][j] == 1) {
 					ct.beginPath();
 	                ct.arc( offset_x+j*2*(R+1)+(R+1) , offset_y+i*2*(R+1)+(R+1) , R , 0 , 2*Math.PI );
 	                ct.closePath();
+	                ct.fill();
 	                if(isChange) {
 
 		                BALLS.push({
@@ -229,9 +238,11 @@
 		                });
 	                }
 				}
-				ct.fill();
+				
 			}
 		}
+
+		ct.restore();
 	}
 
 	function renderBalls(ct) {
@@ -242,7 +253,10 @@
 			ct.beginPath();
 			ct.arc(BALLS[i].x, BALLS[i].y, BALLS[i].r, 0, 2*Math.PI);
 			ct.closePath();
-			ct.fillStyle = BALLS[i].color;
+        	var radial = ct.createRadialGradient(BALLS[i].x,BALLS[i].y,0,BALLS[i].x,BALLS[i].y,BALLS[i].r);
+        	radial.addColorStop(0,'white');
+        	radial.addColorStop(1,BALLS[i].color);
+			ct.fillStyle = radial;
 			ct.fill();
 
 			if (BALLS[i].y - BALLS[i].r < WIN_HEIGHT) {
@@ -258,11 +272,36 @@
 		// }
 	}
 
+	function drawShape(offset_x,offset_y,R,rot,draw,ct) {
+		ct.save();
+
+		ct.translate(offset_x,offset_y);
+		ct.rotate(rot/180 * Math.PI);
+		ct.scale(R,R);
+		draw(ct);
+
+		ct.fillStyle = "#ccc";
+		ct.fill();
+		ct.restore();
+
+	}
+
+	function drawStar(ct) {
+		ct.beginPath();
+		for(var i=0; i<5; i++) {
+			ct.lineTo( Math.cos((18 + i*72)/180 * Math.PI),
+				-Math.sin((18 + i*72)/180 * Math.PI));
+			ct.lineTo( Math.cos((54 + i*72)/180 * Math.PI) * .5,
+				-Math.sin((54 + i*72)/180 * Math.PI) * .5);
+		}
+		ct.closePath();
+	}
 	function updateBalls() {
 		for (var i = 0; i < BALLS.length; i++) {
-			BALLS[i].x += BALLS[i].vx;
+			BALLS[i].x += BALLS[i].vx - 5;
 			BALLS[i].y += BALLS[i].vy;
-			BALLS[i].vy += BALLS[i].g;  
+			BALLS[i].vy += BALLS[i].g;
+			BALLS[i].r += 0.2;  
 		}
 	}
 	function update(ct) {
