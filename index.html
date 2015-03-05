@@ -255,7 +255,7 @@
 			ct.closePath();
         	var radial = ct.createRadialGradient(BALLS[i].x,BALLS[i].y,0,BALLS[i].x,BALLS[i].y,BALLS[i].r);
         	radial.addColorStop(0,'white');
-        	radial.addColorStop(1,BALLS[i].color);
+        	radial.addColorStop(.7,BALLS[i].color);
 			ct.fillStyle = radial;
 			ct.fill();
 
