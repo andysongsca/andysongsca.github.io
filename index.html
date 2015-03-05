@@ -12,8 +12,8 @@
 	window.onload = function() {
 
 		var cv = document.getElementById('cv');
-		cv.width = document.body.clientWidth;
-		cv.height = document.body.clientHeight;
+		cv.width = window.innerWidth;
+		cv.height = window.innerHeight;
 		var ct = cv.getContext("2d");
 
 		if (ct) {
