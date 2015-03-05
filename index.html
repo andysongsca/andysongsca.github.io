@@ -17,7 +17,7 @@
 		var ct = cv.getContext("2d");
 
 		if (ct) {
-			var lineColor = ct.createLinearGradient(0, 0, 400, 400);
+			var lineColor = ct.createLinearGradient(0, 0, cv.width, cv.height);
 			lineColor.addColorStop(0.0, 'white');
 			lineColor.addColorStop(0.25, 'yellow');
 			lineColor.addColorStop(0.5, 'green');
@@ -25,12 +25,12 @@
 			lineColor.addColorStop(1, 'black');
 			ct.fillStyle = lineColor;
 			ct.fillRect(0,0,cv.width,cv.height);
-			ct.font = "60px Courier New";
+			ct.font = "30px Courier New";
 		    //设置字体填充颜色
 		    ct.fillStyle = "white";
 		    //从坐标点(50,50)开始绘制文字
-		    ct.fillText("CodePlayer+中文测试", 50, 350);
-		    ct.fillText("duang~~我就是测试文字", 111, 600);
+		    ct.fillText("CodePlayer+中文测试", 30, cv.height/4);
+		    ct.fillText("duang~~我就是测试文字", 40, cv.height/2);
 		    alert('jyc is a sb')
 		}
 	}
