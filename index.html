@@ -1,11 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width" name="viewport">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="cv"></canvas>
+</body>
+<script type="text/javascript">
+	window.onload = function() {
 
-  <head>
-    <meta charset='utf-8'>
-    <title>Yaomo.github.io</title>
-  </head>
-  <body>
-    <section class="main">this is a main section description</section>
-  </body>
+		var cv = document.getElementById('cv');
+		cv.width = 800;
+		cv.height = 800;
+		var ct = cv.getContext("2d");
+
+		if (ct) {
+			var lineColor = ct.createLinearGradient(0, 0, 400, 400);
+			lineColor.addColorStop(0.0, 'white');
+			lineColor.addColorStop(0.25, 'yellow');
+			lineColor.addColorStop(0.5, 'green');
+			lineColor.addColorStop(0.75, 'blue');
+			lineColor.addColorStop(1, 'black');
+			ct.fillStyle = lineColor;
+			ct.fillRect(0,0,800,800);
+			ct.font = "60px Courier New";
+		    //设置字体填充颜色
+		    ct.fillStyle = "white";
+		    //从坐标点(50,50)开始绘制文字
+		    ct.fillText("CodePlayer+中文测试", 50, 350);
+		    ct.fillText("duang~~我就是测试文字", 111, 600);
+		    alert('jyc is a sb')
+		}
+	}
+
+</script>
 </html>
