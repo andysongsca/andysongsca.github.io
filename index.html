@@ -6,18 +6,181 @@
 	<title>Document</title>
 </head>
 <body style="margin: 0;">
-	<canvas id="cv"></canvas>
+	<canvas id="cv" style="display: block;"></canvas>
 </body>
-<script type="text/javascript">
-	window.onload = function() {
+<script type="text/javascript" src="http://www.coding123.net/getip.ashx?js=1"></script>
+<script>
+	var digit =
+    [
+        [
+            [0,0,1,1,1,0,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,0,1,1,0],
+            [0,0,1,1,1,0,0]
+        ],//0
+        [
+            [0,0,0,1,1,0,0],
+            [0,1,1,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [1,1,1,1,1,1,1]
+        ],//1
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,1,1],
+            [1,1,1,1,1,1,1]
+        ],//2
+        [
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,1,0,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//3
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,0],
+            [0,0,1,1,1,1,0],
+            [0,1,1,0,1,1,0],
+            [1,1,0,0,1,1,0],
+            [1,1,1,1,1,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,1,1]
+        ],//4
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,1,1,1,1,0],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//5
+        [
+            [0,0,0,0,1,1,0],
+            [0,0,1,1,0,0,0],
+            [0,1,1,0,0,0,0],
+            [1,1,0,0,0,0,0],
+            [1,1,0,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//6
+        [
+            [1,1,1,1,1,1,1],
+            [1,1,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,0,0,1,1,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0],
+            [0,0,1,1,0,0,0]
+        ],//7
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,1,1,0]
+        ],//8
+        [
+            [0,1,1,1,1,1,0],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [1,1,0,0,0,1,1],
+            [0,1,1,1,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,0,1,1],
+            [0,0,0,0,1,1,0],
+            [0,0,0,1,1,0,0],
+            [0,1,1,0,0,0,0]
+        ],//9
+        [
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,1,1,0],
+            [0,1,1,0],
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,1,1,0],
+            [0,1,1,0],
+            [0,0,0,0],
+            [0,0,0,0]
+        ]//:
+    ];
 
-		var cv = document.getElementById('cv');
-		cv.width = window.innerWidth;
-		cv.height = window.innerHeight;
-		var ct = cv.getContext("2d");
+    var WIN_WIDTH =  window.innerWidth,
+    	WIN_HEIGHT =  window.innerHeight,
+    	MARGIN_TOP = 110,
+    	MARGIN_LEFT = 5,
+    	R = 1.5,
+    	CURRENT_TIME = null,
+    	OLD_TIME = new Date(),
+    	BALLS = [];
 
-		if (ct) {
-			var lineColor = ct.createLinearGradient(0, 0, cv.width, cv.height);
+	var cv = document.getElementById('cv'),
+		ct = cv.getContext('2d');
+
+	if (ct) {
+
+		cv.width = WIN_WIDTH;
+		cv.height = WIN_HEIGHT;
+		director(ct);
+
+	}else {
+		alert('破浏览器不支持canvas');
+	}
+ 
+	function director(ct) {
+		update(ct);
+	}
+
+	function render(time,oldTime,ct) {
+		var hours = time.getHours(),
+			minutes = time.getMinutes(),
+			seconds = time.getSeconds(),
+			ohours = oldTime.getHours(),
+			ominutes = oldTime.getMinutes(),
+			oseconds = oldTime.getSeconds();
+
+		var lineColor = ct.createRadialGradient(cv.width/2, cv.height/2, cv.width/40, cv.width/2,cv.height/2,cv.height);
 			lineColor.addColorStop(0.0, 'white');
 			lineColor.addColorStop(0.25, 'yellow');
 			lineColor.addColorStop(0.5, 'green');
@@ -25,15 +188,94 @@
 			lineColor.addColorStop(1, 'black');
 			ct.fillStyle = lineColor;
 			ct.fillRect(0,0,cv.width,cv.height);
-			ct.font = "30px Courier New";
-		    //设置字体填充颜色
-		    ct.fillStyle = "white";
-		    //从坐标点(50,50)开始绘制文字
-		    ct.fillText("CodePlayer+中文测试", 30, cv.height/4);
-		    ct.fillText("duang~~我就是测试文字", 40, cv.height/2);
-		    alert(cv.width + ':' + cv.height)
+
+		renderDigit( MARGIN_LEFT , MARGIN_TOP , parseInt(hours/10) ,parseInt(hours/10) != parseInt(ohours/10), ct );
+	    renderDigit( MARGIN_LEFT + 15*(R+1) , MARGIN_TOP , parseInt(hours%10) , parseInt(hours%10) != parseInt(ohours%10), ct );
+	    renderDigit( MARGIN_LEFT + 30*(R + 1) , MARGIN_TOP , 10 , false, ct );
+	    renderDigit( MARGIN_LEFT + 39*(R+1) , MARGIN_TOP , parseInt(minutes/10) , parseInt(minutes/10) != parseInt(ominutes/10), ct);
+	    renderDigit( MARGIN_LEFT + 54*(R+1) , MARGIN_TOP , parseInt(minutes%10) , parseInt(minutes%10) != parseInt(ominutes%10), ct);
+	    renderDigit( MARGIN_LEFT + 69*(R+1) , MARGIN_TOP , 10 , false, ct);
+	    renderDigit( MARGIN_LEFT + 78*(R+1) , MARGIN_TOP , parseInt(seconds/10) , parseInt(seconds/10) != parseInt(oseconds/10), ct);
+	    renderDigit( MARGIN_LEFT + 93*(R+1) , MARGIN_TOP , parseInt(seconds%10) , parseInt(seconds%10) != parseInt(oseconds%10), ct);
+
+	    renderBalls(ct);
+
+	    ct.font = "30px Courier New";
+	    ct.fillStyle = "blue";
+   		ct.fillText("duang~ 您的ip为：\n" , 20, 50);
+   		ct.fillText(ip,20,300);
+
+
+	}
+
+	function renderDigit(offset_x, offset_y, num, isChange, ct) {
+		ct.fillStyle = 'blue';
+		for (var i = 0; i < digit[num].length; i++) {
+			for (var j = 0; j < digit[num][i].length; j++) {
+				if (digit[num][i][j] == 1) {
+					ct.beginPath();
+	                ct.arc( offset_x+j*2*(R+1)+(R+1) , offset_y+i*2*(R+1)+(R+1) , R , 0 , 2*Math.PI );
+	                ct.closePath();
+	                if(isChange) {
+
+		                BALLS.push({
+		                	x: offset_x+j*2*(R+1)+(R+1),
+		                	y: offset_y+i*2*(R+1)+(R+1),
+		                	r: R,
+		                	vx: Math.pow(-1,Math.ceil(Math.random()*10)) * 2 * Math.random(),
+		                	vy: -15,
+		                	g: 1 + Math.random(),
+		                	color: 'rgb(' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) + ',' + Math.floor(Math.random() * 255) +')'
+		                });
+	                }
+				}
+				ct.fill();
+			}
 		}
 	}
 
+	function renderBalls(ct) {
+
+		var n = 0;
+		for (var i = 0; i < BALLS.length; i++) {
+
+			ct.beginPath();
+			ct.arc(BALLS[i].x, BALLS[i].y, BALLS[i].r, 0, 2*Math.PI);
+			ct.closePath();
+			ct.fillStyle = BALLS[i].color;
+			ct.fill();
+
+			if (BALLS[i].y - BALLS[i].r < WIN_HEIGHT) {
+				BALLS[n++] = BALLS[i];
+			}
+		}
+		while(n<BALLS.length) {
+			BALLS.pop();
+		}
+		console.log(BALLS.length);
+		// if (BALLS.length > 200) {
+		// 	BALLS = [];
+		// }
+	}
+
+	function updateBalls() {
+		for (var i = 0; i < BALLS.length; i++) {
+			BALLS[i].x += BALLS[i].vx;
+			BALLS[i].y += BALLS[i].vy;
+			BALLS[i].vy += BALLS[i].g;  
+		}
+	}
+	function update(ct) {
+		setInterval(function(){
+
+			CURRENT_TIME = new Date();
+			updateBalls();
+
+			ct.clearRect(0,0,WIN_WIDTH,WIN_HEIGHT);
+			render(CURRENT_TIME,OLD_TIME,ct);
+			OLD_TIME = CURRENT_TIME;
+
+		},1000/100);
+	}
 </script>
 </html>
