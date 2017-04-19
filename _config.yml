@@ -1,7 +1,7 @@
-title: 
-description: 
-google_analytics: 
-show_downloads: true
+title: 默的手记
+description: 前端, nodejs, react, vuejs, koa, shell, nginx等
+google_analytics: 前端, nodejs, react, vuejs, koa, shell, nginx等
+show_downloads: false
 theme: jekyll-theme-hacker
 
 gems:
