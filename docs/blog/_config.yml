@@ -10,9 +10,9 @@ description: 前端技术手记，node技术，react， vuejs等. 神的孩子�
 author: Andy Song
 language: zh-CN
 timezone: Asia/Shanghai
-URL: http://yaomo.github.io
+URL: http://www.andysongsca.com/blog
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: 'http://yaomo.github.io/blog/'
+url: 'http://www.andysongsca.com/blog/'
 root: '/blog/'
 permalink: :year/:month/:day/:title/
 permalink_defaults:
